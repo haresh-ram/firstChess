@@ -8,6 +8,12 @@ table{
 	margin: auto;
 
 }
+
+p{
+	padding-left:100px;
+	font-size:30px;
+	font-weight:bold;
+}
 .one{
 	width : 80px;
 	border : 3px solid black;
@@ -37,4 +43,75 @@ table{
 	font-weight : bold;
 	font-size : 20px;
 	
+}
+
+
+.cube{
+	width : 100px;
+	height : 100px;
+	border : 4px solid black;
+	background-color:rgb(255, 238, 193);
+	text-align : center;
+	font-size : 55px;
+}
+
+.cube:hover{
+	transition :0.25s;
+	background-color : gray;
+	transform : scale(1.10);
+	cursor : pointer;	
+
+
+}
+
+.butn{
+	width:130px;
+	height:40px;
+	font-size:30px;
+	font-weight:bold;
+	font-family:times new roman;
+	text-align:center;
+	background-color:rgb(0, 147, 255);	
+	position:relative;
+	top:30px;
+	left:500px;
+	border-radius:12px;
+	border : 3px solid black;
+	padding:0px;
+}
+
+.butn:hover{
+	transition :0.25s;
+	transform : scale(1.10);
+	cursor : pointer;
+}
+
+.addc:hover{
+	transition :0.25s;
+	background-color : gray;
+	transform : scale(1.20);
+	cursor : pointer;	
+
+
+}
+
+.mod{
+	width:99%;
+	height:100%;
+	background-color:rgba(0,0,0,0.65);
+	position:absolute;
+	top: 0;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	display:none;
+	
+	
+}
+
+.mod1{
+	width:800px;
+	height:400px;
+	background-color:rgb(175, 205, 255);
+	border-radius: 4px;
 }
