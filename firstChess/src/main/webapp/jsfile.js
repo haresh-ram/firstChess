@@ -897,7 +897,7 @@ function king(i){
 	kt4=bky;
 	
 	if(pwx1==0 && pwy1==4 && pwx2==0 && pwy2==6 && wk==0 && we2==0){
-		if(ch[0][5]=="0" && ch[0][6]=="0"){
+		if(ch[0][5]=="0" && ch[0][6]=="0" && ch[0][7]=="we" && ch[0][4]=="wk"){
 			ch[pwx1][pwy1]="0";
 			ch[pwx2][pwy2]="wk";
 			wkx=pwx2;
@@ -916,7 +916,7 @@ function king(i){
 		}
 			
 	}else if(pwx1==0 && pwy1==4 && pwx2==0 && pwy2==2 && wk==0 && we1==0){
-		if(ch[0][3]=="0" && ch[0][2]=="0" && ch[0][1]=="0"){
+		if(ch[0][3]=="0" && ch[0][2]=="0" && ch[0][1]=="0" && ch[0][0]=="we" && ch[0][4]=="wk"){
 			ch[pwx1][pwy1]="0";
 			ch[pwx2][pwy2]="wk";
 			wkx=pwx2;
@@ -936,7 +936,7 @@ function king(i){
 		}
 		
 	}else if(pwx1==7 && pwy1==4 && pwx2==7 && pwy2==6 && bk==0 && be2==0){
-		if(ch[7][5]=="0" && ch[7][6]=="0"){
+		if(ch[7][5]=="0" && ch[7][6]=="0" && ch[7][7]=="be" && ch[7][4]=="bk"){
 			ch[pwx1][pwy1]="0";
 			ch[pwx2][pwy2]="bk";
 			bkx=pwx2;
@@ -955,7 +955,7 @@ function king(i){
 		}
 		
 	}else if(pwx1==7 && pwy1==4 && pwx2==7 && pwy2==2 && bk==0 && be1==0){
-		if(ch[7][3]=="0" && ch[7][2]=="0" && ch[7][1]=="0"){
+		if(ch[7][3]=="0" && ch[7][2]=="0" && ch[7][1]=="0" && ch[7][0]=="be" && ch[7][4]=="bk"){
 			ch[pwx1][pwy1]="0";
 			ch[pwx2][pwy2]="bk";
 			bkx=pwx2;
@@ -1558,7 +1558,7 @@ function kOptions(i){
 	
 	if(whit==0){
 		
-		if(pwx1==0 && pwy1==4 && wk==0 && we2==0 && ch[0][5]=="0" && ch[0][6]=="0"){
+		if(pwx1==0 && pwy1==4 && wk==0 && we2==0 && ch[0][5]=="0" && ch[0][6]=="0" && ch[0][7]=="we" && ch[0][4]=="wk"){
 			ch[0][6]="wk";
 			ch[0][4]="0";
 			wkx=0;
@@ -1576,7 +1576,7 @@ function kOptions(i){
 			}
 		}
 		
-		if(pwx1==0 && pwy1==4 && wk==0 && we1==0 && ch[0][3]=="0" && ch[0][2]=="0" && ch[0][1]=="0"){
+		if(pwx1==0 && pwy1==4 && wk==0 && we1==0 && ch[0][3]=="0" && ch[0][2]=="0" && ch[0][1]=="0" && ch[0][0]=="we" && ch[0][4]=="wk"){
 			ch[0][2]="wk";
 			ch[0][4]="0";
 			wkx=0;
@@ -1765,7 +1765,7 @@ function kOptions(i){
 	}else{
 	
 	
-		if(pwx1==7 && pwy1==4 && bk==0 && be2==0 && ch[7][5]=="0" && ch[7][6]=="0"){
+		if(pwx1==7 && pwy1==4 && bk==0 && be2==0 && ch[7][5]=="0" && ch[7][6]=="0" && ch[7][7]=="be" && ch[7][4]=="bk"){
 			ch[7][6]="bk";
 			ch[7][4]="0";
 			bkx=7;
@@ -1783,7 +1783,7 @@ function kOptions(i){
 			}
 		}
 		
-		if(pwx1==7 && pwy1==4 && bk==0 && be1==0 && ch[7][3]=="0" && ch[7][2]=="0" && ch[7][1]=="0"){
+		if(pwx1==7 && pwy1==4 && bk==0 && be1==0 && ch[7][3]=="0" && ch[7][2]=="0" && ch[7][1]=="0" && ch[7][0]=="be" && ch[7][4]=="bk"){
 			ch[7][2]="bk";
 			ch[7][4]="0";
 			bkx=7;
@@ -3169,36 +3169,22 @@ function btnclik(i){
 	bclik=document.getElementById(i).innerHTML;
 	bclikid=i;
 	
-	tm=bclikid.search("be");
-	if(tm==1){
+	
+	if(bclikid=="be"){
 		ch[pwx2][pwy2]="be";
-	}
-	tm=bclikid.search("bh");
-	if(tm==1){
+	}else if(bclikid=="bh"){
 		ch[pwx2][pwy2]="bh";
-	}
-	tm=bclikid.search("bm");
-	if(tm==1){
+	}else if(bclikid=="bm"){
 		ch[pwx2][pwy2]="bm";
-	}
-	tm=bclikid.search("bq");
-	if(tm==1){
+	}else if(bclikid=="bq"){
 		ch[pwx2][pwy2]="bq";
-	}
-	tm=bclikid.search("we");
-	if(tm==1){
+	}else if(bclikid=="we"){
 		ch[pwx2][pwy2]="we";
-	}
-	tm=bclikid.search("wh");
-	if(tm==1){
+	}else if(bclikid=="wh"){
 		ch[pwx2][pwy2]="wh";
-	}
-	tm=bclikid.search("wm");
-	if(tm==1){
+	}else if(bclikid=="wm"){
 		ch[pwx2][pwy2]="wm";
-	}
-	tm=bclikid.search("wq");
-	if(tm==1){
+	}else if(bclikid=="wq"){
 		ch[pwx2][pwy2]="wq";
 	}
 }
@@ -3208,7 +3194,25 @@ function cls(i){
 		document.getElementById(str2).innerHTML=bclik;
 		str1=""+pwx2+pwy2+bclikid;
 		document.getElementById(str2).setAttribute("id",str1);
+		if(whit==1){
+			cv = bcheck();	
+			if(cv==true){
+				temp=wcmate();
+				if(temp==true){
+					document.getElementById("cmate").style.cssText="display:flex;";
+				}
+			}
+		}else{
+			cv = wcheck();	
+			if(cv==true){
+				temp=bcmate();
+				if(temp==true){
+					document.getElementById("cmate").style.cssText="display:flex;";
+				}
+			}
+		}
 		document.getElementById(i).style.display = "none";
+
 	}
 }
 
