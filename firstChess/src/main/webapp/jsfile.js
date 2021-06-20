@@ -3107,6 +3107,7 @@ function castle(el,i){
 		document.getElementById("03").innerHTML=kp;
 		document.getElementById("00we1").setAttribute("id","00");
 		document.getElementById("03").setAttribute("id","03we1");
+		document.getElementById("00").classList.remove("addc");
 		
 	}else if(i.charAt(1)=='6' && i.charAt(0)=='7'){
 	
@@ -3422,7 +3423,7 @@ function wcheck(){
 			}
 		}
 	}
-	
+
 		if((wkx + 2) <=7 && (wky + 1) <=7){
 			if((ch[(wkx + 2)][(wky + 1)])=="bh"){
 				document.getElementById(str1).style.cssText="background-color:red;transition :0.25s;transform : scale(1.20);";
@@ -3453,45 +3454,54 @@ function wcheck(){
 				document.getElementById(str1).style.cssText="background-color:red;transition :0.25s;transform : scale(1.20);";
 				return true;
 			}
-		}if((wkx - 2) >=0 && (wky + 1) <=7){
-			if((ch[(wkx - 2)][(ky + 1)])=="bh"){
+		}if((wkx-2)>=0 && (wky-1)>=0){
+			if(ch[wkx-2][wky-1]=="bh"){
 				document.getElementById(str1).style.cssText="background-color:red;transition :0.25s;transform : scale(1.20);";
 				return true;
 			}
-		}if((wkx - 2) >=0 && (wky - 1) >=0){
-			if((ch[(wkx - 2)][(wky - 1)])=="bh"){
+		}if((wkx-2)>=0 && (wky+1)>=0){
+			if(ch[wkx-2][wky+1]=="bh"){
 				document.getElementById(str1).style.cssText="background-color:red;transition :0.25s;transform : scale(1.20);";
 				return true;
 			}
 		}
+		
 		return false;
 }
 
 
 function wwcolor(){
 	for(n=wkx-1;n>=0;n--){
-		if((ch[n][wky]).charAt(0)=="w" || ch[n][wky]=="bh" || ch[n][wky]=="bp" || ch[n][wky]=="bm" || ch[n][wky]=="bk"){
+		if(n==wkx-1 && ch[n][wky]=="bk"){
+			return false;
+		}else if((ch[n][wky]).charAt(0)=="w" || ch[n][wky]=="bh" || ch[n][wky]=="bp" || ch[n][wky]=="bm" || ch[n][wky]=="bk"){
 			break;
 		}else if(ch[n][wky]=="bq"||ch[n][wky]=="be"){
 			return false;
 		}
 	}
 	for(n=wkx+1;n<=7;n++){
-		if((ch[n][wky]).charAt(0)=="w"|| ch[n][wky]=="bh" || ch[n][wky]=="bp" || ch[n][wky]=="bm" || ch[n][wky]=="bk"){
+		if(n==wkx+1 && ch[n][wky]=="bk"){
+			return false;
+		}else if((ch[n][wky]).charAt(0)=="w"|| ch[n][wky]=="bh" || ch[n][wky]=="bp" || ch[n][wky]=="bm" || ch[n][wky]=="bk"){
 			break;
 		}else if(ch[n][wky]=="bq"||ch[n][wky]=="be"){
 			return false;
 		}
 	}
 	for(n=wky+1;n<=7;n++){
-		if((ch[wkx][n]).charAt(0)=="w"|| ch[wkx][n]=="bh" || ch[wkx][n]=="bp" || ch[wkx][n]=="bm" || ch[wkx][n]=="bk"){
+		if(n==wky+1 && ch[wkx][n]=="bk"){
+			return false;
+		}else if((ch[wkx][n]).charAt(0)=="w"|| ch[wkx][n]=="bh" || ch[wkx][n]=="bp" || ch[wkx][n]=="bm" || ch[wkx][n]=="bk"){
 			break;
 		}else if(ch[wkx][n]=="bq"||ch[wkx][n]=="be"){
 			return false;
 		}
 	}
 	for(n=wky-1;n>=0;n--){
-		if((ch[wkx][n]).charAt(0)=="w"|| ch[wkx][n]=="bh" || ch[wkx][n]=="bp" || ch[wkx][n]=="bm" || ch[wkx][n]=="bk"){
+		if(n==wky-1 && ch[wkx][n]=="bk"){
+			return false;
+		}else if((ch[wkx][n]).charAt(0)=="w"|| ch[wkx][n]=="bh" || ch[wkx][n]=="bp" || ch[wkx][n]=="bm" || ch[wkx][n]=="bk"){
 			break;
 		}else if(ch[wkx][n]=="bq"||ch[wkx][n]=="be"){
 			return false;
@@ -3500,7 +3510,7 @@ function wwcolor(){
 	
 	if(wkx<7 && wky<7){
 		for(a=wkx+1, b=wky+1; a<=7 && b<=7; a++,b++){
-			if(a==wkx+1 && ch[a][b]=="bp"){
+			if(a==wkx+1 && (ch[a][b]=="bp"||ch[a][b]=="bk")){
 				return false;
 			}else if((ch[a][b]).charAt(0)=="w"|| ch[a][b]=="bh" || ch[a][b]=="bp" || ch[a][b]=="be" || ch[a][b]=="bk"){
 				break;
@@ -3511,7 +3521,9 @@ function wwcolor(){
 	}
 	if(wkx>0 && wky>0){
 		for(a=wkx-1, b=wky-1; a>=0 && b>=0; a--,b--){
-			if((ch[a][b]).charAt(0)=="w"|| ch[a][b]=="bh" || ch[a][b]=="bp" || ch[a][b]=="be" || ch[a][b]=="bk"){
+			if(a==wkx-1 && ch[a][b]=="bk"){
+				return false;
+			}else if((ch[a][b]).charAt(0)=="w"|| ch[a][b]=="bh" || ch[a][b]=="bp" || ch[a][b]=="be" || ch[a][b]=="bk"){
 				break;
 			}else if(ch[a][b]=="bq"||ch[a][b]=="bm"){
 				return false;
@@ -3520,7 +3532,9 @@ function wwcolor(){
 	}
 	if(wkx>0 && wky<7){
 		for(a=wkx-1, b=wky+1; a>=0 && b<=7; a--,b++){
-			if((ch[a][b]).charAt(0)=="w"|| ch[a][b]=="bh" || ch[a][b]=="bp" || ch[a][b]=="be" || ch[a][b]=="bk"){
+			if(a==wkx-1 && ch[a][b]=="bk"){
+				return false;
+			}else if((ch[a][b]).charAt(0)=="w"|| ch[a][b]=="bh" || ch[a][b]=="bp" || ch[a][b]=="be" || ch[a][b]=="bk"){
 				break;
 			}else if(ch[a][b]=="bq"||ch[a][b]=="bm"){
 				return false;
@@ -3529,7 +3543,7 @@ function wwcolor(){
 	}
 	if(wkx<7 && wky>0){
 		for(a=wkx+1, b=wky-1; a<=7 && b>=0; a++,b--){
-			if(a==wkx+1 && ch[a][b]=="bp"){
+			if(a==wkx+1 && (ch[a][b]=="bp"||ch[a][b]=="bk")){
 				return false;
 			}else if((ch[a][b]).charAt(0)=="w" || ch[a][b]=="bh" || ch[a][b]=="bp" || ch[a][b]=="be" || ch[a][b]=="bk"){
 				break;
@@ -3579,28 +3593,36 @@ function wwcolor(){
 
 function bwcolor(){
 	for(n=bkx-1;n>=0;n--){
-		if((ch[n][bky]).charAt(0)=="b" || ch[n][bky]=="wh" || ch[n][bky]=="wp" || ch[n][bky]=="wm" || ch[n][bky]=="wk"){
+		if(n==bkx-1 && ch[n][bky]=="wk"){
+			return false;
+		}else if((ch[n][bky]).charAt(0)=="b" || ch[n][bky]=="wh" || ch[n][bky]=="wp" || ch[n][bky]=="wm" || ch[n][bky]=="wk"){
 			break;
 		}else if(ch[n][bky]=="wq"||ch[n][bky]=="we"){
 			return false;
 		}
 	}
 	for(n=bkx+1;n<=7;n++){
-		if((ch[n][bky]).charAt(0)=="b"|| ch[n][bky]=="wh" || ch[n][bky]=="wp" || ch[n][bky]=="wm" || ch[n][bky]=="wk"){
+		if(n==bkx+1 && ch[n][bky]=="wk"){
+			return false;
+		}else if((ch[n][bky]).charAt(0)=="b"|| ch[n][bky]=="wh" || ch[n][bky]=="wp" || ch[n][bky]=="wm" || ch[n][bky]=="wk"){
 			break;
 		}else if(ch[n][bky]=="wq"||ch[n][bky]=="we"){
 			return false;
 		}
 	}
 	for(n=bky+1;n<=7;n++){
-		if((ch[bkx][n]).charAt(0)=="b"|| ch[bkx][n]=="wh" || ch[bkx][n]=="wp" || ch[bkx][n]=="wm" || ch[bkx][n]=="wk"){
+		if(n==bky+1 && ch[bkx][n]=="wk"){
+			return false;
+		}else if((ch[bkx][n]).charAt(0)=="b"|| ch[bkx][n]=="wh" || ch[bkx][n]=="wp" || ch[bkx][n]=="wm" || ch[bkx][n]=="wk"){
 			break;
 		}else if(ch[bkx][n]=="wq"||ch[bkx][n]=="we"){
 			return false;
 		}
 	}
 	for(n=bky-1;n>=0;n--){
-		if((ch[bkx][n]).charAt(0)=="b"|| ch[bkx][n]=="wh" || ch[bkx][n]=="wp" || ch[bkx][n]=="wm" || ch[bkx][n]=="wk"){
+		if(n==bky-1 && ch[bkx][n]=="wk"){
+			return false;
+		}else if((ch[bkx][n]).charAt(0)=="b"|| ch[bkx][n]=="wh" || ch[bkx][n]=="wp" || ch[bkx][n]=="wm" || ch[bkx][n]=="wk"){
 			break;
 		}else if(ch[bkx][n]=="wq"||ch[bkx][n]=="we"){
 			return false;
@@ -3608,7 +3630,9 @@ function bwcolor(){
 	}
 	if(bkx<7 && bky<7){
 		for(a=bkx+1, b=bky+1; a<=7 && b<=7; a++,b++){
-			if((ch[a][b]).charAt(0)=="b"|| ch[a][b]=="wh" || ch[a][b]=="wp" || ch[a][b]=="we" || ch[a][b]=="wk"){
+			if(a==bkx+1 && ch[a][b]=="wk"){
+				return false;
+			}else if((ch[a][b]).charAt(0)=="b"|| ch[a][b]=="wh" || ch[a][b]=="wp" || ch[a][b]=="we" || ch[a][b]=="wk"){
 				break;
 			}else if(ch[a][b]=="wq"||ch[a][b]=="wm"){
 				return false;
@@ -3617,7 +3641,7 @@ function bwcolor(){
 	}
 	if(bkx>0 && bky>0){
 		for(a=bkx-1, b=bky-1; a>=0 && b>=0; a--,b--){
-			if(a==bkx-1 && ch[a][b]=="wp"){
+			if(a==bkx-1 && (ch[a][b]=="wp"||ch[a][b]=="wk")){
 				return false;
 			}else if((ch[a][b]).charAt(0)=="b"|| ch[a][b]=="wh" || ch[a][b]=="wp" || ch[a][b]=="we" || ch[a][b]=="wk"){
 				break;
@@ -3628,7 +3652,7 @@ function bwcolor(){
 	}
 	if(bkx>0 && bky<7){
 		for(a=bkx-1, b=bky+1; a>=0 && b<=7; a--,b++){
-			if(a==bkx-1 && ch[a][b]=="wp"){
+			if(a==bkx-1 && (ch[a][b]=="wp"||ch[a][b]=="wk")){
 				return false;
 			}else if((ch[a][b]).charAt(0)=="b"|| ch[a][b]=="wh" || ch[a][b]=="wp" || ch[a][b]=="we" || ch[a][b]=="wk"){
 				break;
@@ -3639,7 +3663,9 @@ function bwcolor(){
 	}
 	if(bkx<7 && bky>0){
 		for(a=bkx+1, b=bky-1; a<=7 && b>=0; a++,b--){
-			if((ch[a][b]).charAt(0)=="b" || ch[a][b]=="wh" || ch[a][b]=="wp" || ch[a][b]=="we" || ch[a][b]=="wk"){
+			if(a==bkx+1 && ch[a][b]=="wk"){
+				return false;
+			}else if((ch[a][b]).charAt(0)=="b" || ch[a][b]=="wh" || ch[a][b]=="wp" || ch[a][b]=="we" || ch[a][b]=="wk"){
 				break;
 			}else if(ch[a][b]=="wq"||ch[a][b]=="wm"){
 				return false;
