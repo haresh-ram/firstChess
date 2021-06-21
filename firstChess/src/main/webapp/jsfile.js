@@ -196,6 +196,7 @@ function fun(el,i){
 				}
 			}
 			
+			document.getElementById("har").innerHTML="Black to move......";
 			cv = bcheck();	
 			if(cv==true){
 				temp=wcmate();
@@ -311,6 +312,7 @@ function fun(el,i){
 				}
 			}	
 			
+			document.getElementById("har").innerHTML="White to move......";
 			cv = wcheck();	
 			if(cv==true){
 				temp=bcmate();
@@ -717,7 +719,6 @@ function bishop(i){
 					ch[pwx2][pwy2]=b1;
 				}
 			}
-			
 			
 		}
 	}
