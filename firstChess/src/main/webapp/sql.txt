@@ -1,0 +1,16 @@
+create database chessbase;
+
+use chessBase;
+
+create table User (
+	username varchar(30) ,
+    password varchar(20) ,
+    email varchar(40) ,
+    country varchar(20) ,
+    matchesPlayed int,
+    matchesWon int ,
+    matchesLost int ,
+    userID int not null auto_increment primary key
+);
+
+select * from user;
