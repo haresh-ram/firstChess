@@ -12,7 +12,6 @@ function onhover(id){
 	document.getElementById(id).style.cursor = "pointer";
 }
 
-
 function clikbtn(i){
 	var lp=document.getElementsByClassName("samp");
 	 
@@ -5415,7 +5414,7 @@ function change(el,i){
 
 
 
-soc = new WebSocket("ws://"+document.location.host+"/chess/chessHelper");
+soc = new WebSocket("ws://"+document.location.host+"/firstChess/chessHelper");
 
 soc.onopen = function(message){
 	console.log("opened!!!!!!!!!!");
