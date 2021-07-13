@@ -264,14 +264,14 @@ a:hover {
 	cursor : pointer;
 }
 
-#label1,#label2,#label3,#label4,#label5,#label6,#label7,#label8{
+#label1,#label2,#label3,#label4,#label5,#label6,#label7,#label8,#codeLabel{
 	display:block;
 	font-size:15px;
 	font-family:times new roman;
 	color:red;
 }
 
-#playButton{
+.playButton{
 	width:100px;
 	height:40px;
 	font-size:20px;
@@ -281,12 +281,11 @@ a:hover {
 	background-color:rgb(52, 183, 255);	
 	border-radius:5px;
 	border : 3px solid black;
-	margin-top:17px;
-	margin-left:17px;
-	margin-right:20px;
+	margin-top:60px;
+	margin-left:70px;
 }
 
-#playButton:hover{
+.playButton:hover{
 	transition :0.25s;
 	transform : scale(1.10);
 	cursor : pointer;
@@ -337,14 +336,45 @@ a:hover {
 	font-size:15px;
 }
 
-
-#playButton{
-	margin-left:180px;
+#gameCodeBox{
+	height:35px;
+	width:270px;
+	font-size:16px;
+	font-family:Arial;
+	border-radius:5px;
+	border: 1px solid rgb(70, 172, 255);
+	margin-top:40px;
+	margin-left:70px;
+	background-color:rgba(52, 183, 255,0.2);
 }
 
-#playText{
-	margin-top:200px;
+#gameCodeButton{
+	width:100px;
+	height:40px;
+	font-size:20px;
 	font-weight:bold;
-	font-size:50px;
+	font-family:times new roman;
 	text-align:center;
+	background-color:rgb(52, 183, 255);	
+	border-radius:5px;
+	border : 3px solid black;
+	margin-top:30px;
+	margin-left:70px;
+}
+
+#gameCodeButton:hover{
+	transition :0.25s;
+	transform : scale(1.10);
+	cursor : pointer;
+}
+
+#createLabel{
+	font-size:23px;
+	font-weight:bold;
+	margin-left:70px;
+}
+
+#codeCreateDiv{
+	margin-top:150px;
+	visibility:hidden;
 }

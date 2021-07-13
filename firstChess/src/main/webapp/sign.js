@@ -152,6 +152,8 @@ function checkValidLogin(){
 }
 
 function openGame(){
+	var gameCode = document.getElementById("codeSpan").innerHTML;
+	localStorage.setItem("gameCode",gameCode);
 	window.location.href="board.jsp";
 }
 
@@ -175,5 +177,38 @@ function getProfile(){
 	};
 	xhttp.open("POST","chessLoginServlet?action="+"getProfile");
 	xhttp.send();
+}
+
+function codeSubmit(){
+	var box = document.getElementById("gameCodeBox");
+	if(box.value.trim()==""){
+		box.style.cssText="border:2px solid red;";
+		document.getElementById("codeLabel").innerHTML = "Field cannot be Empty";
+		return false;
+	}
+	localStorage.setItem("gameCode",box.value);
+	window.location.href="board.jsp";
+}
+
+function codeBoxFocus(){
+	document.getElementById("gameCodeBox").style.cssText="border: 1px solid rgb(70, 172, 255);";
+	document.getElementById("codeLabel").innerHTML="";
+	document.getElementById("gameCodeBox").value="";
+}
+
+function createGame(){
+	if("" + (getComputedStyle(document.getElementById("codeCreateDiv")).visibility) == "hidden"){
+		document.getElementById("codeDiv").style.cssText = "visibility:hidden";
+		document.getElementById("codeCreateDiv").style.cssText = "visibility:visible";
+		var rand = Math.floor(1 + (Math.random() * 100000));
+		document.getElementById("codeSpan").innerHTML = rand;
+	}
+}
+
+
+function joinGame(){
+	codeBoxFocus()
+	document.getElementById("codeCreateDiv").style.cssText = "visibility:hidden";
+	document.getElementById("codeDiv").style.cssText = "visibility:visible";
 }
 

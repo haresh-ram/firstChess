@@ -5,11 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Board Page</title>
-<link rel="stylesheet" type="text/CSS" href="ssheet.css"> 
-<script src="jsfile.js">
-
-	
-</script>
+<link rel="stylesheet" type="text/CSS" href="ssheet.css">
+<script src="jsfile.js"></script>
 </head>
 
 <body id="bd" style="background-color :rgba(100, 168, 255,0.7);overflow:hidden">
@@ -19,8 +16,8 @@
 
 	if(session.getAttribute("email")==null)
 		response.sendRedirect("index.jsp");
-
 %>
+
 
 <br>
 

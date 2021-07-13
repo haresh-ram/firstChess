@@ -1,10 +1,14 @@
 package firstChess;
 
+import javax.servlet.http.HttpSession;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.*;
@@ -13,14 +17,12 @@ import java.util.*;
 public class chessHelper {
 	
 	static Set<Session> users = Collections.synchronizedSet(new HashSet<Session>());
-	static int i=0;
+	HttpSession session;
+	JSONParser parser = new JSONParser();
 	
 	@OnOpen
 	public void open(Session session) {
-		
-		
-		users.add(session);
-	
+			users.add(session);
 	}
 	
 	@OnClose
@@ -31,12 +33,27 @@ public class chessHelper {
 	@OnMessage
 	public void message(String str, Session session) throws IOException {		
 		
+		String gameCode="";
+		if(session.getUserProperties().get("gameCode") == null) {
+			session.getUserProperties().put("gameCode", str);
+		}else {
 		
-		Iterator<Session> itr = users.iterator();
-			while(itr.hasNext()) {
-				
-				itr.next().getBasicRemote().sendText(str);
+			try {
+				Object obj = parser.parse(str);
+				JSONObject json = (JSONObject) obj;
+				gameCode = (String) json.get("code");
+			} catch (ParseException e) {
+				e.printStackTrace();
 			}
+			
+			gameCode = (String) session.getUserProperties().get("gameCode");
+			
+			for(Session sess : users) {
+				String code = (String) sess.getUserProperties().get("gameCode");
+				if(code.equals(gameCode))
+				sess.getBasicRemote().sendText(str);
+			}
+		}
 		
 	}
 	

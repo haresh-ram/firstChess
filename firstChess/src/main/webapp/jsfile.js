@@ -96,6 +96,7 @@ var wk=0;
 var nm;
 var bclik="";
 var bclikid="";
+var gameCode;
 var ds;
 var str1="";
 var str2="";
@@ -5405,7 +5406,8 @@ function change(el,i){
 				castt:0,
 				pp:0,
 				ppcoin:0,
-				ppid:0
+				ppid:0,
+				code:gameCode
 			};		
 			var json = JSON.stringify(obj);
 			soc.send(json);
@@ -5418,6 +5420,9 @@ soc = new WebSocket("ws://"+document.location.host+"/firstChess/chessHelper");
 
 soc.onopen = function(message){
 	console.log("opened!!!!!!!!!!");
+	gameCode = "" + localStorage.getItem("gameCode");
+	console.log(gameCode);
+	soc.send(gameCode);
 };
 
 
@@ -5572,7 +5577,8 @@ function castle(el,i){
 				castt:et,
 				pp:0,
 				ppcoin:0,
-				ppid:0
+				ppid:0,
+				code:gameCode
 			};		
 			var json = JSON.stringify(obj);
 			soc.send(json);
@@ -5619,7 +5625,8 @@ function cls(iq){
 				castt:0,
 				pp:1,
 				ppcoin:bclik,
-				ppid:bclikid
+				ppid:bclikid,
+				code:gameCode
 			};		
 			var json = JSON.stringify(obj);
 			soc.send(json);

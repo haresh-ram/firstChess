@@ -42,9 +42,17 @@
 	</div>
 	
 	<div class="column">
-		<p id="playText">Start a Game</p>
-		<input id="playButton" type="button" value="Play" onclick="openGame()">
-		
+		<div id="codeCreateDiv">
+			<label id="createLabel">The Code for the Game is : <span id="codeSpan"></span></label>
+			<input style="margin-top:10px;" id="gameCodeButton" type="button" onclick="openGame()" value="Go">
+		</div>
+		<input class="playButton" type="button" value="Create" onclick="createGame()">
+		<input class="playButton" type="button" value="Join" onclick="joinGame()">
+		<div id="codeDiv" style="visibility:hidden">
+			<input id="gameCodeBox" onfocus="codeBoxFocus()" type="text" placeholder="Enter Code" name="gameCodeBox"><br>
+			<label id="codeLabel" style="margin-left:70px;margin-top:10px;"></label>
+			<input id="gameCodeButton" type="button" onclick="codeSubmit()" value="Go"> 
+		</div>
 	</div>
 
 

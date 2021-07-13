@@ -2,6 +2,8 @@ package firstChess;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +21,11 @@ public class chessLoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String country = request.getParameter("country");
+		String gameCode = request.getParameter("gameCode");
    		String action = request.getParameter("action");
+   		int i=0;
+   		
+   		Set<String> gameCodes = new HashSet<String>();
    		
    		if(action!=null && action.equals("loginPriorCheck")) {
 
@@ -81,7 +87,5 @@ public class chessLoginServlet extends HttpServlet {
 			}
 
    		}
-
-
    	}
 }
