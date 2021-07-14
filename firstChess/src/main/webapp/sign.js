@@ -154,7 +154,14 @@ function checkValidLogin(){
 function openGame(){
 	var gameCode = document.getElementById("codeSpan").innerHTML;
 	localStorage.setItem("gameCode",gameCode);
-	window.location.href="board.jsp";
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			window.location.href="board.jsp";
+		}
+	};
+	xhttp.open("POST","chessLoginServlet?gameCode="+gameCode+"&action="+"registerGame");
+	xhttp.send();
 }
 
 
@@ -194,21 +201,45 @@ function codeBoxFocus(){
 	document.getElementById("gameCodeBox").style.cssText="border: 1px solid rgb(70, 172, 255);";
 	document.getElementById("codeLabel").innerHTML="";
 	document.getElementById("gameCodeBox").value="";
+	document.getElementById("gameCodeBox1").style.cssText="border: 1px solid rgb(70, 172, 255);";
+	document.getElementById("codeLabel1").innerHTML="";
+	document.getElementById("gameCodeBox1").value="";
 }
 
 function createGame(){
 	if("" + (getComputedStyle(document.getElementById("codeCreateDiv")).visibility) == "hidden"){
 		document.getElementById("codeDiv").style.cssText = "visibility:hidden";
+		document.getElementById("codeDiv2").style.cssText = "visibility:hidden";
 		document.getElementById("codeCreateDiv").style.cssText = "visibility:visible";
 		var rand = Math.floor(1 + (Math.random() * 100000));
 		document.getElementById("codeSpan").innerHTML = rand;
 	}
 }
 
+function spectateJoin(){
+	codeBoxFocus();
+	document.getElementById("codeCreateDiv").style.cssText = "visibility:hidden";
+	document.getElementById("codeDiv").style.cssText = "visibility:hidden";
+	document.getElementById("codeDiv2").style.cssText = "visibility:visible";
+}
 
 function joinGame(){
-	codeBoxFocus()
+	codeBoxFocus();
 	document.getElementById("codeCreateDiv").style.cssText = "visibility:hidden";
 	document.getElementById("codeDiv").style.cssText = "visibility:visible";
+	document.getElementById("codeDiv2").style.cssText = "visibility:hidden";
 }
+
+
+function spectateGame(){
+	var box = document.getElementById("gameCodeBox1");
+	if(box.value.trim()==""){
+		box.style.cssText="border:2px solid red;";
+		document.getElementById("codeLabel1").innerHTML = "Field cannot be Empty";
+		return false;
+	}
+	localStorage.setItem("gameCode",box.value)
+	window.location.href="spectateBoard.jsp";
+}
+
 

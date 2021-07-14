@@ -2,7 +2,10 @@ package firstChess;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -21,11 +24,9 @@ public class chessLoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String country = request.getParameter("country");
-		String gameCode = request.getParameter("gameCode");
    		String action = request.getParameter("action");
-   		int i=0;
-   		
-   		Set<String> gameCodes = new HashSet<String>();
+   		String gameCode = request.getParameter("gameCode");  
+   		String color = request.getParameter("color");
    		
    		if(action!=null && action.equals("loginPriorCheck")) {
 
@@ -86,6 +87,27 @@ public class chessLoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
+   		}else if(action!=null && action.equals("registerGame")) {
+   			try {
+				chessDAO.registerGame(gameCode);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+   		}else if(action!=null && action.equals("colorAvailability")) {
+   			
+   			HttpSession session = request.getSession();
+			String emailid = (String) session.getAttribute("email");
+			
+			try {
+				boolean value = chessDAO.colorAvailability(gameCode, color, emailid);
+				if(value == true) {
+					response.getWriter().print("true");
+				}else {
+					response.getWriter().print("false");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
    		}
    	}
 }

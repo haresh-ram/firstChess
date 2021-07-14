@@ -6,10 +6,8 @@
 <meta charset="ISO-8859-1">
 <title>Dash Board</title>
 <link rel="stylesheet" type="text/CSS" href="ssheet.css">
-<script src="sign.js">
-
-	
-</script>
+<script src="sign.js"></script>
+<script src="jsfile.js"></script>
 </head>
 <body onload="getProfile()">
 
@@ -48,10 +46,16 @@
 		</div>
 		<input class="playButton" type="button" value="Create" onclick="createGame()">
 		<input class="playButton" type="button" value="Join" onclick="joinGame()">
+		<input class="playButton" type="button" value="Spectate" onclick="spectateJoin()">
 		<div id="codeDiv" style="visibility:hidden">
 			<input id="gameCodeBox" onfocus="codeBoxFocus()" type="text" placeholder="Enter Code" name="gameCodeBox"><br>
 			<label id="codeLabel" style="margin-left:70px;margin-top:10px;"></label>
 			<input id="gameCodeButton" type="button" onclick="codeSubmit()" value="Go"> 
+		</div>
+		<div id="codeDiv2" style="visibility:hidden">
+			<input id="gameCodeBox1" onfocus="codeBoxFocus()" type="text" placeholder="Enter Code" name="gameCodeBox"><br>
+			<label id="codeLabel1" style="margin-left:70px;margin-top:10px;"></label>
+			<input id="gameCodeButton1" type="button" onclick="spectateGame()" value="Go"> 
 		</div>
 	</div>
 

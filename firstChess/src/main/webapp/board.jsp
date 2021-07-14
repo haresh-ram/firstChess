@@ -7,6 +7,7 @@
 <title>Board Page</title>
 <link rel="stylesheet" type="text/CSS" href="ssheet.css">
 <script src="jsfile.js"></script>
+<script src="sign.js"></script>
 </head>
 
 <body id="bd" style="background-color :rgba(100, 168, 255,0.7);overflow:hidden">

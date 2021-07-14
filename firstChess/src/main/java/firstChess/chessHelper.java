@@ -1,6 +1,5 @@
 package firstChess;
 
-import javax.servlet.http.HttpSession;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -17,7 +16,6 @@ import java.util.*;
 public class chessHelper {
 	
 	static Set<Session> users = Collections.synchronizedSet(new HashSet<Session>());
-	HttpSession session;
 	JSONParser parser = new JSONParser();
 	
 	@OnOpen

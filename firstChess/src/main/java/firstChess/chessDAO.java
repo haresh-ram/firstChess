@@ -82,5 +82,49 @@ public class chessDAO {
 		
 	}
 	
+	public static void registerGame(String gameCode) throws ClassNotFoundException, SQLException {
+		connects();
+		PreparedStatement statement = con.prepareStatement("insert into matches(matchID) values (?)");
+		statement.setString(1, gameCode);
+		statement.executeUpdate();
+	}
+	
+	public static boolean colorAvailability(String gameCode, String color, String email) throws ClassNotFoundException, SQLException {
+		connects();
+		PreparedStatement statement = con.prepareStatement("select * from matches where matchID = ?");
+		statement.setString(1, gameCode);
+		ResultSet rs = statement.executeQuery();
+		
+		String white = null;
+		String black = null;
+		while(rs.next()) {
+			white = rs.getString(2);
+			black = rs.getString(3);
+		}
+		if(color.equals("white")) {
+			if(white == null) {
+				PreparedStatement statement1 = con.prepareStatement("update matches set white = ? where matchID = ? ");
+				statement1.setString(2, gameCode);
+				statement1.setString(1, email);
+				statement1.executeUpdate();
+				return true;
+			}
+			else
+				return false;
+		}else {
+			if(black == null) {
+				PreparedStatement statement1 = con.prepareStatement("update matches set black = ? where matchID = ? ");
+				statement1.setString(2, gameCode);
+				statement1.setString(1, email);
+				statement1.executeUpdate();
+				return true;
+			}
+			else
+				return false;
+		}
+		
+		
+	}
+	
 	
 }

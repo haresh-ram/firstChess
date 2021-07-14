@@ -21,22 +21,6 @@ function clikbtn(i){
 	document.getElementById(i).style.cssText = "transition :0.25s;background-color : rgb(60, 166, 116);transform : scale(1.50)";
 	bclikid=i;
 }
-function start(iq){
-	if(bclikid!=""){
-		if(bclikid=="wp"){
-			col="white";
-			bboard.remove();
-			
-		}else if(bclikid=="bp"){
-			col="black";
-			wboard.remove();
-		}
-		document.getElementById("openPage").style.cssText = "display:none";
-		bclikid="";
-	}else{
-		document.getElementById("sg").innerHTML="Please select any of the below before starting.....";
-	}
-}
 
 
 var col;
@@ -5633,6 +5617,50 @@ function cls(iq){
 		document.getElementById(iq).style.display = "none";
 		
 
+	}
+}
+
+
+
+function start(iq){
+	if(bclikid!=""){
+		if(bclikid=="wp"){
+			col="white";
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					if(this.responseText == "true"){
+						bboard.remove();
+						document.getElementById("openPage").style.cssText = "display:none";
+						bclikid="";
+					}else{
+						document.getElementById("sg").innerHTML="Opponent has already chosen White";
+					}
+				}	
+			};
+			xhttp.open("POST","chessLoginServlet?gameCode="+gameCode+"&color="+"white"+"&action="+"colorAvailability");
+			xhttp.send();
+		
+		}else if(bclikid=="bp"){
+			col="black";
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					if(this.responseText == "true"){
+						wboard.remove();
+						document.getElementById("openPage").style.cssText = "display:none";
+						bclikid="";
+					}else{
+						document.getElementById("sg").innerHTML="Opponent has already chosen Black";
+					}
+				}	
+			};
+			xhttp.open("POST","chessLoginServlet?gameCode="+gameCode+"&color="+"black"+"&action="+"colorAvailability");
+			xhttp.send();
+		}		
+		
+	}else{
+		document.getElementById("sg").innerHTML="Please select any of the below before starting.....";
 	}
 }
 

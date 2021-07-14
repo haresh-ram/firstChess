@@ -264,7 +264,7 @@ a:hover {
 	cursor : pointer;
 }
 
-#label1,#label2,#label3,#label4,#label5,#label6,#label7,#label8,#codeLabel{
+#label1,#label2,#label3,#label4,#label5,#label6,#label7,#label8,#codeLabel,#codeLabel1{
 	display:block;
 	font-size:15px;
 	font-family:times new roman;
@@ -282,7 +282,7 @@ a:hover {
 	border-radius:5px;
 	border : 3px solid black;
 	margin-top:60px;
-	margin-left:70px;
+	margin-left:40px;
 }
 
 .playButton:hover{
@@ -336,7 +336,7 @@ a:hover {
 	font-size:15px;
 }
 
-#gameCodeBox{
+#gameCodeBox,#gameCodeBox1{
 	height:35px;
 	width:270px;
 	font-size:16px;
@@ -348,7 +348,7 @@ a:hover {
 	background-color:rgba(52, 183, 255,0.2);
 }
 
-#gameCodeButton{
+#gameCodeButton,#gameCodeButton1{
 	width:100px;
 	height:40px;
 	font-size:20px;
@@ -362,7 +362,7 @@ a:hover {
 	margin-left:70px;
 }
 
-#gameCodeButton:hover{
+#gameCodeButton:hover,#gameCodeButton1:hover{
 	transition :0.25s;
 	transform : scale(1.10);
 	cursor : pointer;
