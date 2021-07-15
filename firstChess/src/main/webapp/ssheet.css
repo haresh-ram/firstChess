@@ -271,28 +271,6 @@ a:hover {
 	color:red;
 }
 
-.playButton{
-	width:100px;
-	height:40px;
-	font-size:20px;
-	font-weight:bold;
-	font-family:times new roman;
-	text-align:center;
-	background-color:rgb(52, 183, 255);	
-	border-radius:5px;
-	border : 3px solid black;
-	margin-top:60px;
-	margin-left:40px;
-}
-
-.playButton:hover{
-	transition :0.25s;
-	transform : scale(1.10);
-	cursor : pointer;
-}
-
-
-
 #myProfile{
 	width:350px;
 	height:500px;
@@ -312,7 +290,7 @@ a:hover {
 .column{
 	float:left;
 	padding:15px;
-	width:33.33%;
+	width:40%;
 }
 
 .profileElements{
@@ -343,7 +321,7 @@ a:hover {
 	font-family:Arial;
 	border-radius:5px;
 	border: 1px solid rgb(70, 172, 255);
-	margin-top:40px;
+	margin-top:20px;
 	margin-left:70px;
 	background-color:rgba(52, 183, 255,0.2);
 }
@@ -374,7 +352,27 @@ a:hover {
 	margin-left:70px;
 }
 
-#codeCreateDiv{
-	margin-top:150px;
-	visibility:hidden;
+.tabLinks{
+	border:none;
+	overflow:hidden;
+	padding: 16px 55.3px;
+	float:left;
+	background-color:rgb(52, 183, 255);
+	cursor:pointer;
+	font-family:times new roman;
+	font-weight:bold;
+	font-size:25px;
 }
+
+#linkTabGroup{
+	margin-top:70px;
+}
+
+.tabDiv{
+	padding: 100px 50px;
+	background-color:rgba(52, 183, 255,0.2);
+	border: 1px solid rgb(52, 183, 255);
+}
+
+
+

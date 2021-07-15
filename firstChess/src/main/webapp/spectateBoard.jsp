@@ -4,22 +4,32 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Spectate Board</title>
-<link rel="stylesheet" type="text/CSS" href="sheet.css">
+<meta charset="UTF-8">
+<title>Spectator Board</title>
+<link rel="stylesheet" type="text/CSS" href="ssheet.css">
+<script src="spectator.js"></script>
 <script src="jsfile.js"></script>
-<script src="sign.js"></script>
 </head>
-<body style="background-color :rgba(100, 168, 255,0.7);overflow:hidden">
+<body style="background-color :rgba(100, 168, 255,0.7);overflow:hidden" onload="spectatorBoardPos()">
+
+<%
+	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+
+	if(session.getAttribute("email")==null)
+		response.sendRedirect("index.jsp");
+%>
+
+
 <div id="wboard">
 <br>
 <table id="tab"> 
 
 	<tr>
-	<td class="nob">8</td><td id="70" onclick="fun(this,this.id)" onmouseover="onhover(this.id)"  class = "one 70">&#9820</td> <td id="71" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 71">&#9822</td> <td id="72" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 72">&#9821</td> <td id="73" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 73">&#9819</td> <td id="74" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 74">&#9818</td> <td id="75" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 75">&#9821</td> <td id="76" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 76">&#9822</td> <td id="77" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 77">&#9820</td>
+	<td class="nob">8</td><td id="70" onclick="fun(this,this.id)" onmouseover="onhover(this.id)"  class = "one 70"></td> <td id="71" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 71"></td> <td id="72" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 72"></td> <td id="73" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 73"></td> <td id="74" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 74"></td> <td id="75" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 75"></td> <td id="76" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 76"></td> <td id="77" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 77"></td>
 	</tr>
 	
 	<tr>
-	<td class="nob">7</td><td id="60" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 60">&#9823</td> <td id="61" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 61">&#9823</td> <td id="62" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 62">&#9823</td> <td id="63" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 63">&#9823</td> <td id="64" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 64">&#9823</td> <td id="65" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 65">&#9823</td> <td id="66" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 66">&#9823</td> <td id="67" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 67">&#9823</td>
+	<td class="nob">7</td><td id="60" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 60"></td> <td id="61" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 61"></td> <td id="62" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 62"></td> <td id="63" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 63"></td> <td id="64" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 64"></td> <td id="65" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 65"></td> <td id="66" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 66"></td> <td id="67" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 67"></td>
 	</tr>
 	
 	<tr>
@@ -39,11 +49,11 @@
 	</tr>
 	
 	<tr>
-	<td class="nob">2</td><td id="10" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 10">&#9817</td> <td id="11" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 11">&#9817</td> <td id="12" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 12">&#9817</td> <td id="13" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 13">&#9817</td> <td id="14" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 14">&#9817</td> <td id="15" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 15">&#9817</td> <td id="16" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 16">&#9817</td> <td id="17" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 17">&#9817</td>
+	<td class="nob">2</td><td id="10" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 10"></td> <td id="11" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 11"></td> <td id="12" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 12"></td> <td id="13" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 13"></td> <td id="14" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 14"></td> <td id="15" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 15"></td> <td id="16" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 16"></td> <td id="17" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 17"></td>
 	</tr>
 	
 	<tr>
-	<td class="nob">1</td> <td id="00" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 00">&#9814</td> <td id="01" onclick="fun(this,this.id)" onmouseover="onhover(this.id)"  class = "one 01">&#9816</td> <td id="02" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 02">&#9815</td> <td id="03" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 03">&#9813</td> <td id="04" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 04">&#9812</td> <td id="05" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 05">&#9815</td> <td id="06" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 06">&#9816</td> <td id="07" onclick="fun(this,this.id)" onmouseover="onhover(this.id)"  class = "one 07">&#9814</td>
+	<td class="nob">1</td> <td id="00" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 00"></td> <td id="01" onclick="fun(this,this.id)" onmouseover="onhover(this.id)"  class = "one 01"></td> <td id="02" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 02"></td> <td id="03" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 03"></td> <td id="04" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 04"></td> <td id="05" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "one 05"></td> <td id="06" onclick="fun(this,this.id)" onmouseover="onhover(this.id)" class = "two 06"></td> <td id="07" onclick="fun(this,this.id)" onmouseover="onhover(this.id)"  class = "one 07"></td>
 	</tr>
 	
 	<tr>

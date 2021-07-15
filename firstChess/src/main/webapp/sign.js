@@ -194,40 +194,52 @@ function codeSubmit(){
 		return false;
 	}
 	localStorage.setItem("gameCode",box.value);
+	document.getElementById("gameCodeBox").value="";
 	window.location.href="board.jsp";
+	
 }
 
 function codeBoxFocus(){
 	document.getElementById("gameCodeBox").style.cssText="border: 1px solid rgb(70, 172, 255);";
 	document.getElementById("codeLabel").innerHTML="";
-	document.getElementById("gameCodeBox").value="";
 	document.getElementById("gameCodeBox1").style.cssText="border: 1px solid rgb(70, 172, 255);";
 	document.getElementById("codeLabel1").innerHTML="";
-	document.getElementById("gameCodeBox1").value="";
 }
 
 function createGame(){
-	if("" + (getComputedStyle(document.getElementById("codeCreateDiv")).visibility) == "hidden"){
-		document.getElementById("codeDiv").style.cssText = "visibility:hidden";
-		document.getElementById("codeDiv2").style.cssText = "visibility:hidden";
-		document.getElementById("codeCreateDiv").style.cssText = "visibility:visible";
+	document.getElementById("tab1").style.cssText = "background-color:black;color:white";
+	document.getElementById("tab2").style.cssText = "background-color:rgb(52, 183, 255);color:black";
+	document.getElementById("tab3").style.cssText = "background-color:rgb(52, 183, 255);color:black";
+	if("" + (getComputedStyle(document.getElementById("codeCreateDiv")).display) == "none"){
+		document.getElementById("codeDiv").style.cssText = "display:none";
+		document.getElementById("codeDiv2").style.cssText = "display:none";
+		document.getElementById("codeCreateDiv").style.cssText = "display:block";
 		var rand = Math.floor(1 + (Math.random() * 100000));
 		document.getElementById("codeSpan").innerHTML = rand;
 	}
 }
 
 function spectateJoin(){
+	document.getElementById("tab3").style.cssText = "background-color:black;color:white";
+	document.getElementById("tab2").style.cssText = "background-color:rgb(52, 183, 255);color:black";
+	document.getElementById("tab1").style.cssText = "background-color:rgb(52, 183, 255);color:black";
 	codeBoxFocus();
-	document.getElementById("codeCreateDiv").style.cssText = "visibility:hidden";
-	document.getElementById("codeDiv").style.cssText = "visibility:hidden";
-	document.getElementById("codeDiv2").style.cssText = "visibility:visible";
+	document.getElementById("gameCodeBox1").value="";
+	document.getElementById("codeCreateDiv").style.cssText = "display:none";
+	document.getElementById("codeDiv").style.cssText = "display:none";
+	document.getElementById("codeDiv2").style.cssText = "display:block";
+	codeBoxFocus();
 }
 
 function joinGame(){
+	document.getElementById("tab2").style.cssText = "background-color:black;color:white";
+	document.getElementById("tab1").style.cssText = "background-color:rgb(52, 183, 255);color:black";
+	document.getElementById("tab3").style.cssText = "background-color:rgb(52, 183, 255);color:black";
 	codeBoxFocus();
-	document.getElementById("codeCreateDiv").style.cssText = "visibility:hidden";
-	document.getElementById("codeDiv").style.cssText = "visibility:visible";
-	document.getElementById("codeDiv2").style.cssText = "visibility:hidden";
+	document.getElementById("gameCodeBox").value="";
+	document.getElementById("codeCreateDiv").style.cssText = "display:none";
+	document.getElementById("codeDiv").style.cssText = "display:block";
+	document.getElementById("codeDiv2").style.cssText = "display:none";
 }
 
 
@@ -238,8 +250,7 @@ function spectateGame(){
 		document.getElementById("codeLabel1").innerHTML = "Field cannot be Empty";
 		return false;
 	}
-	localStorage.setItem("gameCode",box.value)
+	localStorage.setItem("gameCode",box.value);
+	document.getElementById("gameCodeBox1").value="";
 	window.location.href="spectateBoard.jsp";
 }
-
-

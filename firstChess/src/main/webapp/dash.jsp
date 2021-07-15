@@ -40,19 +40,24 @@
 	</div>
 	
 	<div class="column">
-		<div id="codeCreateDiv">
-			<label id="createLabel">The Code for the Game is : <span id="codeSpan"></span></label>
-			<input style="margin-top:10px;" id="gameCodeButton" type="button" onclick="openGame()" value="Go">
+		<div id="linkTabGroup" style="overflow:hidden">
+			<input id="tab1" class="tabLinks" type="button" value="Create" onclick="createGame()">
+			<input id="tab2" class="tabLinks" type="button" value="Join" onclick="joinGame()">
+			<input id="tab3" style="background-color:black;color:white" class="tabLinks" type="button" value="Spectate" onclick="spectateJoin()">
 		</div>
-		<input class="playButton" type="button" value="Create" onclick="createGame()">
-		<input class="playButton" type="button" value="Join" onclick="joinGame()">
-		<input class="playButton" type="button" value="Spectate" onclick="spectateJoin()">
-		<div id="codeDiv" style="visibility:hidden">
+		
+		<div class="tabDiv" id="codeCreateDiv" style="display:none;overflow:hidden">
+			<label id="createLabel">The Code for the Game is : <span id="codeSpan"></span></label>
+			<input id="gameCodeButton" type="button" onclick="openGame()" value="Go">
+		</div>
+		
+		<div class="tabDiv" id="codeDiv" style="display:none;overflow:hidden">
 			<input id="gameCodeBox" onfocus="codeBoxFocus()" type="text" placeholder="Enter Code" name="gameCodeBox"><br>
 			<label id="codeLabel" style="margin-left:70px;margin-top:10px;"></label>
 			<input id="gameCodeButton" type="button" onclick="codeSubmit()" value="Go"> 
 		</div>
-		<div id="codeDiv2" style="visibility:hidden">
+		
+		<div class="tabDiv" id="codeDiv2" style="overflow:hidden;">
 			<input id="gameCodeBox1" onfocus="codeBoxFocus()" type="text" placeholder="Enter Code" name="gameCodeBox"><br>
 			<label id="codeLabel1" style="margin-left:70px;margin-top:10px;"></label>
 			<input id="gameCodeButton1" type="button" onclick="spectateGame()" value="Go"> 

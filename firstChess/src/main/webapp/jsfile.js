@@ -88,14 +88,14 @@ var be1=0,be2=0,bk=0;
 var wpm = ["","","","","","","",""];
 var bpm = ["","","","","","","",""];
 
-var ch = [["we1","wh","wm","wq","wk","wm","wh","we2","0"],
-		  ["wp","wp","wp","wp","wp","wp","wp","wp","0"],
-		  ["0","0","0","0","0","0","0","0","0"],
-		  ["0","0","0","0","0","0","0","0","0"],
-		  ["0","0","0","0","0","0","0","0","0"],
-		  ["0","0","0","0","0","0","0","0","0"],
-		  ["bp","bp","bp","bp","bp","bp","bp","bp","0"],
-		  ["be1","bh","bm","bq","bk","bm","bh","be2","0"]];
+var ch = [["we1","wh","wm","wq","wk","wm","wh","we2",],
+		  ["wp","wp","wp","wp","wp","wp","wp","wp",],
+		  ["0","0","0","0","0","0","0","0",],
+		  ["0","0","0","0","0","0","0","0",],
+		  ["0","0","0","0","0","0","0","0",],
+		  ["0","0","0","0","0","0","0","0",],
+		  ["bp","bp","bp","bp","bp","bp","bp","bp",],
+		  ["be1","bh","bm","bq","bk","bm","bh","be2",]];
 
 
 function fun(el,i){
@@ -5496,9 +5496,20 @@ soc.onmessage = function(message){
 			whit=1;
 			else
 			whit=0;
+			
+			
+		}
+			
+		
+		var pos = ch.toString();	
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if(this.readyState == 4 && this.status == 200){
+				
 			}
-			
-			
+		};
+		xhttp.open("POST","chessLoginServlet?action="+"currentPosUpdate"+"&pos="+pos+"&gameCode="+gameCode);
+		xhttp.send();
 		
 			v="";
 			

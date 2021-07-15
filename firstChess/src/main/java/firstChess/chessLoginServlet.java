@@ -27,6 +27,7 @@ public class chessLoginServlet extends HttpServlet {
    		String action = request.getParameter("action");
    		String gameCode = request.getParameter("gameCode");  
    		String color = request.getParameter("color");
+   		String pos = request.getParameter("pos");
    		
    		if(action!=null && action.equals("loginPriorCheck")) {
 
@@ -105,6 +106,19 @@ public class chessLoginServlet extends HttpServlet {
 				}else {
 					response.getWriter().print("false");
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+   		}else if(action!=null && action.equals("currentPosUpdate")) {
+   			try {
+				chessDAO.updateCurrPos(pos,gameCode);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+   		}else if(action!=null && action.equals("getSpectatorBoardPos")) {
+   			try {
+				String str = chessDAO.getCurrPos(gameCode);
+				response.getWriter().print(str);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 

@@ -125,6 +125,27 @@ public class chessDAO {
 		
 		
 	}
+
+	public static void updateCurrPos(String pos,String gameCode) throws SQLException, ClassNotFoundException {
+		connects();
+		PreparedStatement statement = con.prepareStatement("update matches set currentPos = ? where matchID = ?");
+		statement.setString(1, pos);
+		statement.setString(2, gameCode);
+		statement.executeUpdate();
+	}
+	
+	public static String getCurrPos(String gameCode) throws SQLException, ClassNotFoundException {
+		connects();
+		PreparedStatement statement = con.prepareStatement("select currentPos from matches where matchID = ?");
+		statement.setString(1, gameCode);
+		ResultSet rs = statement.executeQuery();
+		String str = null;
+		while(rs.next()) {
+			str = rs.getString(1);
+		}		
+		return str;
+		
+	}
 	
 	
 }
