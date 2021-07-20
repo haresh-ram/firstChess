@@ -10,7 +10,7 @@
 <script src="sign.js"></script>
 </head>
 
-<body id="bd" style="background-color :rgba(100, 168, 255,0.7);overflow:hidden">
+<body id="bd" style="background-color :rgba(100, 168, 255,0.7);overflow:hidden" onload="putCode()">
 
 <%
 	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
@@ -146,10 +146,10 @@
 	</div>
 </div>
 
-<div id="openPage" style="width:99%;height:120%;background-color:rgb(170, 60, 132);position:absolute;top: 0;display:flex;overflow:auto">
+<div id="openPage" style="width:99%;height:100%;background-color:rgb(170, 60, 132);position:absolute;top: 0;display:flex;overflow:hidden">
 	<div style="width:90%;height:80%;display:flex;justify-content:center;margin-left:50px">
 	<div style="color:black;font-size:30px;font-family:times new roman">
-	<h1 style="font-family:Times new roman;font-size:40px;">General Instructions :</h1>
+	<h1 style="font-family:Times new roman;font-size:40px;">General Instructions : <span  style="float:right">Game Code : <span id="codeSpan"></span></span></h1>
 	<ul style="color:white;font-size:25px">
 	<li style="padding-left:1em;margin-bottom:25px">To move a coin, firstly click on the coin which you want to move and then click on the destination where you want to place it. </li>
 	<li style="padding-left:1em;margin-bottom:25px">The color green, on clicking on any coin indicates the possible path to proceed.</li>

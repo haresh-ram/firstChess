@@ -16,6 +16,7 @@ function spectatorBoardPos(){
 			 "50","51","52","53","54","55","56","57",
 			 "60","61","62","63","64","65","66","67",
 			 "70","71","72","73","74","75","76","77"];
+		
 	xhttp.onreadystatechange = function(){
 		if(this.readyState = 4 && this.status == 200){
 			var resp = this.responseText;

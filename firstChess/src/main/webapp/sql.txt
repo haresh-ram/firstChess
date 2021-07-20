@@ -7,10 +7,24 @@ create table User (
     password varchar(20) ,
     email varchar(40) ,
     country varchar(20) ,
-    matchesPlayed int,
-    matchesWon int ,
-    matchesLost int ,
+    matchesPlayed int default 0 ,
+    matchesWon int default 0 ,
+    matchesLost int default 0 ,
     userID int not null auto_increment primary key
 );
 
+
+ create table matches(
+	matchID varchar(20) primary key,
+    white varchar(40),
+    black varchar(40),
+    whiteMoves varchar(1000),
+    blackMoves varchar(1000),
+    matchResult varchar(50),
+    currentPos varchar(300) default "we1,wh,wm,wq,wk,wm,wh,we2,wp,wp,wp,wp,wp,wp,wp,wp,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,bp,bp,bp,bp,bp,bp,bp,bp,be1,bh,bm,bq,bk,bm,bh,be2"
+ );
+
+
 select * from user;
+select * from matches;
+

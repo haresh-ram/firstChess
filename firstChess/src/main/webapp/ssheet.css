@@ -169,7 +169,7 @@ a:hover {
 	border:3px solid rgb(52, 183, 255);
 	justify-content:center;
 	align-items:center;
-	box-shadow: 0px 4px 10px rgba(0,0,0,0.2),0px 0px 20px rgba(0,0,0,0.2);
+	box-shadow: 0px 4px 10px rgba(0,0,0,0.2),0px -10px 20px rgba(0,0,0,0.2);
 	
 }
 
@@ -228,7 +228,7 @@ a:hover {
 	border:3px solid rgb(52, 183, 255);
 	justify-content:center;
 	align-items:center;
-	box-shadow: 0px 4px 10px rgba(0,0,0,0.2),0px 0px 20px rgba(0,0,0,0.2);
+	box-shadow: 0px 4px 10px rgba(0,0,0,0.2),0px -10px 20px rgba(0,0,0,0.2);
 }
 
 .textareasignup{
@@ -282,15 +282,14 @@ a:hover {
 }
 
 .row:after{
-	display:table;
-	content:"";
-	clear:both;
+	content: "";
+  	display: table;
+  	clear: both;
 }
 
 .column{
 	float:left;
-	padding:15px;
-	width:40%;
+	width:33.33%;
 }
 
 .profileElements{
@@ -326,7 +325,7 @@ a:hover {
 	background-color:rgba(52, 183, 255,0.2);
 }
 
-#gameCodeButton,#gameCodeButton1{
+#gameCodeButton,#gameCodeButton1,#leaderBoardButton{
 	width:100px;
 	height:40px;
 	font-size:20px;
@@ -340,7 +339,7 @@ a:hover {
 	margin-left:70px;
 }
 
-#gameCodeButton:hover,#gameCodeButton1:hover{
+#gameCodeButton:hover,#gameCodeButton1:hover,#leaderBoardButton:hover{
 	transition :0.25s;
 	transform : scale(1.10);
 	cursor : pointer;
@@ -355,7 +354,7 @@ a:hover {
 .tabLinks{
 	border:none;
 	overflow:hidden;
-	padding: 16px 55.3px;
+	padding: 16px 40.3px;
 	float:left;
 	background-color:rgb(52, 183, 255);
 	cursor:pointer;
@@ -369,10 +368,76 @@ a:hover {
 }
 
 .tabDiv{
-	padding: 100px 50px;
+	padding: 30px 20px;
 	background-color:rgba(52, 183, 255,0.2);
 	border: 1px solid rgb(52, 183, 255);
 }
 
+#leaderBoardDiv{
+	padding-right:20px;
+	padding-top:70px;
+	float:right;
+	font-family:times new roman;
+	font-size:23px;
+	font-weight:bold;
+	
+}
 
+#leaderBoardPage{
+	width:99%;
+	height:100%;
+	background-color:rgba(0, 0, 0,0.7);
+	position:absolute;
+	top: 0;
+	display:flex;
+	overflow:hidden;
+	align-items:center;
+	justify-content:center;
+	display:none;
+}
+
+#leaderBox{
+	width:500px;
+	height:580px;
+	display:block;
+	border:4px solid rgb(52, 183, 255);
+	background-color:white;
+	overflow:visible;
+	overflow-x:hidden;
+}
+
+#leaderBoardName{
+	font-size:20px;
+	text-align:center;
+	font-weight:bold;
+	height:25px;
+	width:500px;
+	color:rgb(0, 83, 255);
+	padding-bottom:10px;
+	border-bottom:3px solid black;
+}
+
+#leaderBoardXbutton{
+	float:left;
+	font-size:35px;
+	font-weight:bold;
+	margin-top:-20px;
+	padding-left:20px;
+	cursor:pointer;
+	transform:rotate(45deg);
+}
+
+#leaderTable{
+	width:500px;
+	margin-top:-30px;
+	margin-left:-20px;
+	text-align:center;
+	border-collapse:seperate;
+	border-spacing:80px 0;
+	margin-bottom:50px;
+}
+
+.leaderBoardTDs{
+	height:40px;	
+}
 

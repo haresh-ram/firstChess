@@ -70,8 +70,8 @@ public class chessDAO {
 		while(rs.next()) {
 		String username = rs.getString("username");
 		String country = rs.getString("country");
-		int matchesWon = rs.getInt("matchesWon");
-		int matchesLost = rs.getInt("matchesLost");
+		int matchesWon = rs.getInt("matchesWon")/2;
+		int matchesLost = rs.getInt("matchesLost")/2;
 		int matchesPlayed = rs.getInt("matchesPlayed");
 		int userID = rs.getInt("UserID");
 		int matchesDraw = matchesPlayed - (matchesWon + matchesLost);
@@ -107,6 +107,11 @@ public class chessDAO {
 				statement1.setString(2, gameCode);
 				statement1.setString(1, email);
 				statement1.executeUpdate();
+				
+				PreparedStatement statement2 = con.prepareStatement("update user set matchesPlayed = matchesPlayed +1 where email = ?");
+				statement2.setString(1, email);
+				statement2.executeUpdate();		
+				
 				return true;
 			}
 			else
@@ -117,6 +122,11 @@ public class chessDAO {
 				statement1.setString(2, gameCode);
 				statement1.setString(1, email);
 				statement1.executeUpdate();
+				
+				PreparedStatement statement2 = con.prepareStatement("update user set matchesPlayed = matchesPlayed +1 where email = ?");
+				statement2.setString(1, email);
+				statement2.executeUpdate();
+				
 				return true;
 			}
 			else
@@ -147,5 +157,59 @@ public class chessDAO {
 		
 	}
 	
+	public static boolean joinCheck(String gameCode) throws SQLException, ClassNotFoundException {
+		connects();
+		PreparedStatement statement = con.prepareStatement("select black from matches where matchID = ?");
+		statement.setString(1, gameCode);
+		ResultSet rs = statement.executeQuery();
+		String black="";
+		while(rs.next()) {
+			black = rs.getString(1); 
+		}
+		
+		if(black==null)
+			return false;
+		else
+			return true;
+	}
+	
+	public static void winnerUpdate(String gameCode, String winColor, String loseColor) throws ClassNotFoundException, SQLException {
+		connects();
+		PreparedStatement statement = con.prepareStatement("select white, black from matches where matchID = ?");
+		statement.setString(1, gameCode);
+		ResultSet rs = statement.executeQuery();
+		String winEmail = null;
+		String loseEmail = null;
+		while(rs.next()) {
+			if(winColor.equals("white")) {
+				winEmail = rs.getString(2);
+				loseEmail = rs.getString(1);
+				
+				PreparedStatement statement3 = con.prepareStatement("update matches set matchResult = ? where matchID = ?");
+				statement3.setString(1, "black won the match");
+				statement3.setString(2, gameCode);
+				statement3.executeUpdate();
+				
+			}else {
+				winEmail = rs.getString(1);
+				loseEmail = rs.getString(2);
+				
+				PreparedStatement statement4 = con.prepareStatement("update matches set matchResult = ? where matchID = ?");
+				statement4.setString(1, "white won the match");
+				statement4.setString(2, gameCode);
+				statement4.executeUpdate();
+			}
+		}
+		
+		PreparedStatement statement1 = con.prepareStatement("update user set matchesWon = matchesWon +1 where email = ?");
+		statement1.setString(1, winEmail);
+		statement1.executeUpdate();
+		
+		PreparedStatement statement2 = con.prepareStatement("update user set matchesLost = matchesLost +1 where email = ?");
+		statement2.setString(1, loseEmail);
+		statement2.executeUpdate();
+		
+		
+	}
 	
 }

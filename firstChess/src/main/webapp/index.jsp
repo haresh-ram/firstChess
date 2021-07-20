@@ -16,7 +16,7 @@
 	session.invalidate();
 
 %>
-	<div id="outerBox" >
+	<div id="outerBox">
 		<div id="innerBox">
 			<form onsubmit="return checkValidLogin()" action="chessLoginServlet" method="post">
 				<label id="label7" style="font-size:20px" ></label><br>

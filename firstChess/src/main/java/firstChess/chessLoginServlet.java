@@ -1,13 +1,6 @@
 package firstChess;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +21,8 @@ public class chessLoginServlet extends HttpServlet {
    		String gameCode = request.getParameter("gameCode");  
    		String color = request.getParameter("color");
    		String pos = request.getParameter("pos");
+   		String winColor = request.getParameter("winColor");
+   		String loseColor = request.getParameter("loseColor");
    		
    		if(action!=null && action.equals("loginPriorCheck")) {
 
@@ -119,6 +114,22 @@ public class chessLoginServlet extends HttpServlet {
    			try {
 				String str = chessDAO.getCurrPos(gameCode);
 				response.getWriter().print(str);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+   		}else if(action!=null && action.equals("joinCheck")) {
+   			try {
+				boolean value = chessDAO.joinCheck(gameCode);
+				if(value == false)
+					response.getWriter().print("false");
+				else
+					response.getWriter().print("true");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+   		}else if(action!=null && action.equals("winnerUpdate")) {
+   			try {
+				chessDAO.winnerUpdate(gameCode, winColor, loseColor);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 

@@ -85,6 +85,7 @@ var ds;
 var str1="";
 var str2="";
 var be1=0,be2=0,bk=0;
+var joinCheck=0;
 var wpm = ["","","","","","","",""];
 var bpm = ["","","","","","","",""];
 
@@ -106,7 +107,23 @@ function fun(el,i){
 	var x1 = i.charAt(0);
 	var y1 = i.charAt(1);	
 	
-	if(whit==0 && col=="white"){	
+	if(whit==0 && col=="white"){
+		
+		if(joinCheck==0){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					if(this.responseText == "false"){
+						alert("opponent have not joined yet");
+					}else if(this.responseText == "true"){
+						joinCheck=1;
+					}
+				}
+			};
+			xhttp.open("POST","chessLoginServlet?action="+"joinCheck"+"&gameCode="+gameCode,false);
+			xhttp.send();
+		}
+		if(joinCheck==1){
 		if(v==""){
 			if(ch[x1][y1].charAt(0)!="b"){
 				v=el.innerHTML;
@@ -211,7 +228,7 @@ function fun(el,i){
 				}
 			}
 		}
-		
+	}
 		
 	}else if(col=="black" && whit==1){	
 		if(v==""){
@@ -5457,7 +5474,6 @@ soc.onmessage = function(message){
 			ch[pwx2][pwy2]=coin;
 			
 			
-			
 			if(coin=="wk"){
 				wkx=pwx2;
 				wky=pwy2;
@@ -5518,6 +5534,9 @@ soc.onmessage = function(message){
 				temp=bcmate();
 				if(temp==true){
 					document.getElementById("cmate").style.cssText="display:flex;";
+					var xhttp = new XMLHttpRequest();
+					xhttp.open("POST","chessLoginServlet?action="+"winnerUpdate"+"&gameCode="+gameCode+"&winColor="+"white"+"&loseColor="+"black");
+					xhttp.send();
 				}
 			}
 			
@@ -5526,6 +5545,9 @@ soc.onmessage = function(message){
 				temp=wcmate();
 				if(temp==true){
 					document.getElementById("cmate").style.cssText="display:flex;";
+					var xhttp = new XMLHttpRequest();
+					xhttp.open("POST","chessLoginServlet?action="+"winnerUpdate"+"&gameCode="+gameCode+"&winColor="+"black"+"&loseColor="+"white");
+					xhttp.send();
 				}
 			}
 	

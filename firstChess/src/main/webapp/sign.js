@@ -2,7 +2,6 @@
  * 
  */
 
-
 function openSignUp(){
 	cleanFields();
 	textfocus();
@@ -51,7 +50,8 @@ function signUpCheck(){
 	var text3 = document.getElementById("text3");
 	var text5 = document.getElementById("text5");
 	var dropdown = document.getElementById("countries");
-	if(text1.value.trim()=="" || text2.value.trim()=="" || text3.value.trim()=="" || dropdown.options[dropdown.selectedIndex].value == "" || text3.value.trim() != text5.value.trim()){
+	var regx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	if(text1.value.trim()=="" || text2.value.trim()=="" || text3.value.trim()=="" || dropdown.options[dropdown.selectedIndex].value == "" || text3.value.trim() != text5.value.trim() || regx.test(text2.value) == false){
 		if(text1.value.trim()==""){
 			text1.style.cssText="border:2px solid red;";
 			document.getElementById("label3").innerHTML="Field cannot be Empty";
@@ -76,6 +76,10 @@ function signUpCheck(){
 		if(dropdown.options[dropdown.selectedIndex].value == ""){
 			dropdown.style.cssText="border:2px solid red;";
 			document.getElementById("label6").innerHTML="Select your Country";
+		}
+		if(regx.test(text2.value) == false){
+			text2.style.cssText="border:2px solid red;";
+			document.getElementById("label4").innerHTML="Invalid EmailID";
 		}
 		return false;
 	}else{
@@ -107,7 +111,6 @@ function signUpCheck(){
 	}
 		
 }
-
 
 function checkValidLogin(){
 	var field1 = document.getElementById("field1");
@@ -152,8 +155,7 @@ function checkValidLogin(){
 }
 
 function openGame(){
-	var gameCode = document.getElementById("codeSpan").innerHTML;
-	localStorage.setItem("gameCode",gameCode);
+	var gameCode = localStorage.getItem("gameCode");
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
@@ -196,7 +198,6 @@ function codeSubmit(){
 	localStorage.setItem("gameCode",box.value);
 	document.getElementById("gameCodeBox").value="";
 	window.location.href="board.jsp";
-	
 }
 
 function codeBoxFocus(){
@@ -214,8 +215,8 @@ function createGame(){
 		document.getElementById("codeDiv").style.cssText = "display:none";
 		document.getElementById("codeDiv2").style.cssText = "display:none";
 		document.getElementById("codeCreateDiv").style.cssText = "display:block";
-		var rand = Math.floor(1 + (Math.random() * 100000));
-		document.getElementById("codeSpan").innerHTML = rand;
+		var rand = Math.floor(10000 + (Math.random() * 100000000));
+		localStorage.setItem("gameCode",rand);
 	}
 }
 
@@ -253,4 +254,19 @@ function spectateGame(){
 	localStorage.setItem("gameCode",box.value);
 	document.getElementById("gameCodeBox1").value="";
 	window.location.href="spectateBoard.jsp";
+}
+
+function putCode(){
+	var gameCode = localStorage.getItem("gameCode");
+	document.getElementById("codeSpan").innerHTML = gameCode;
+}
+
+
+function openLeaderBoard(){
+	document.getElementById("leaderBoardPage").style.cssText="display:flex";
+}
+
+
+function closeLeaderBoard(){
+	document.getElementById("leaderBoardPage").style.cssText="display:none";
 }
